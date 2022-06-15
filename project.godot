@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/CommandsRes/CommandRes.gd"
 }, {
+"base": "PanelContainer",
+"class": "UnitEditorPanel",
+"language": "GDScript",
+"path": "res://addons/UnitCreator/Scenes/Editor.gd"
+}, {
+"base": "ItemList",
+"class": "UnitResouceList",
+"language": "GDScript",
+"path": "res://addons/UnitCreator/Scenes/UnitList.gd"
+}, {
 "base": "Resource",
 "class": "UnitResource",
 "language": "GDScript",
@@ -33,6 +43,8 @@ _global_script_class_icons={
 "BuildingRes": "",
 "BuldingCommandResource": "",
 "CommandResource": "",
+"UnitEditorPanel": "",
+"UnitResouceList": "",
 "UnitResource": ""
 }
 
@@ -40,6 +52,10 @@ _global_script_class_icons={
 
 config/name="RTS"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/UnitCreator/plugin.cfg" )
 
 [physics]
 
