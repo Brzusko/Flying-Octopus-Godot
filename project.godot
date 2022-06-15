@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "BuildingRes",
+"language": "GDScript",
+"path": "res://Resources/Buildings/BuildingRes.gd"
+}, {
+"base": "Resource",
+"class": "CommandResource",
+"language": "GDScript",
+"path": "res://Resources/CommandsRes/CommandRes.gd"
+}, {
+"base": "Resource",
+"class": "UnitResource",
+"language": "GDScript",
+"path": "res://Resources/UnitRes/UnitRes.gd"
+} ]
+_global_script_class_icons={
+"BuildingRes": "",
+"CommandResource": "",
+"UnitResource": ""
+}
+
 [application]
 
 config/name="RTS"
