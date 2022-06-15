@@ -31,7 +31,7 @@ margin_right = 142.0
 margin_bottom = 562.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-items = [ "Unit", null, false, "Unit", null, false ]
+items = [ "New Unit", null, false, "New Unit", null, false, "New Unit", null, false ]
 allow_reselect = true
 script = ExtResource( 2 )
 units_directory = "res://Resources/UnitRes/Instances"
@@ -52,6 +52,7 @@ margin_right = 142.0
 margin_bottom = 20.0
 text = "Delete"
 
+[connection signal="UnitDeleted" from="ContentContainer/VBoxContainer/ScrollContainer/UnitList" to="." method="_on_UnitList_UnitDeleted"]
 [connection signal="item_selected" from="ContentContainer/VBoxContainer/ScrollContainer/UnitList" to="ContentContainer/VBoxContainer/ScrollContainer/UnitList" method="_on_UnitList_item_selected"]
 [connection signal="pressed" from="ContentContainer/VBoxContainer/ButtonsContainer/CreateBTN" to="ContentContainer/VBoxContainer/ScrollContainer/UnitList" method="_on_CreateBTN_pressed"]
 [connection signal="pressed" from="ContentContainer/VBoxContainer/ButtonsContainer/DeleteBTN" to="ContentContainer/VBoxContainer/ScrollContainer/UnitList" method="_on_DeleteBTN_pressed"]

@@ -3,10 +3,10 @@ extends ItemList
 class_name UnitResouceList
 signal UnitSelected(unit, id);
 signal UnitDeselected;
+signal UnitDeleted;
 
 export(String, DIR) var units_directory; 
 
-onready var unit_script = preload("res://Resources/UnitRes/UnitRes.gd");
 var should_exectue: bool = false;
 var unit_list: Array = [];
 var current_selected_unit: UnitResource = null;
@@ -61,9 +61,17 @@ func create_new_unit() -> void:
 	if !should_exectue:
 		return;
 
-	var new_unit = unit_script.new();
+	var new_unit = UnitResource.new();
 	new_unit.unit_name = "New Unit";
 	var err = ResourceSaver.save(units_directory + "/" + new_unit.unit_name + str(unit_list.size()) + ".tres", new_unit);
+	
+	if err != OK:
+		printerr("Unit Editor: could not create new unit");
+		return;
+	
+	unit_list.append(new_unit);
+	unselect_all();
+	load_units();
 	
 func delete_unit() -> void:
 	if !should_exectue || !current_selected_unit:
@@ -73,15 +81,16 @@ func delete_unit() -> void:
 	var err = dir.remove(path_to_unit);
 	
 	if err != OK:
-		print("Unit Editor: could not delete unit file");
+		printerr("Unit Editor: could not delete unit file");
 		return;
 	
 	current_selected_unit = null;
 	load_units();
+	emit_signal("UnitDeleted");
+	emit_signal("UnitDeselected");
 	
 func _on_CreateBTN_pressed():
 	create_new_unit();
-	load_units();
 
 func _on_UnitList_item_selected(index):
 	on_select(index);
